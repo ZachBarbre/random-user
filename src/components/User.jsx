@@ -4,8 +4,7 @@ import './User.css';
 class User extends Component {
 
     state = {
-        userImage: 'https://randomuser.me/api/portraits/women/17.jpg',
-        userName: 'Misty Lewis'
+        userArray: []
     }
 
     async get() {
@@ -17,31 +16,36 @@ class User extends Component {
     async componentDidMount() {
         try {
             const users = await this.get();
-            const name = users.results[0].name.first + ' ' + users.results[0].name.last;
-            // const names = users.results.map(user => user.name.first + ' ' + user.name.last)
-            // console.log(names)
-            const photo = users.results[0].picture.large;
+            const userArray = users.results.map( user => {
+                return {userName: user.name.first + ' ' + user.name.last,
+                userImage: user.picture.large}
+            })
             this.setState(
                 {
-                    userName: name,
-                    userImage: photo
+                    userArray: userArray,
                 }
             );
+            console.log(userArray);
         } catch (error) {
             this.setState(
-                { userName: error.message }
+                { userArray: [error.message] }
               )
         }
     }
 
 
     render() {
+        const { userArray } = this.state;
         return (
-            <div className='card'>
-                <img className='userPhoto' src={this.state.userImage} 
-                alt='some random person'></img>
-                <p className='userTitle'>Hi, My name is</p>
-                <p className='userValue'>{this.state.userName}</p>
+            <div>
+                {userArray.map( user => 
+                    <div className='card'>
+                        <img className='userPhoto' src={user.userImage} 
+                        alt='some random person'></img>
+                        <p className='userTitle'>Hi, My name is</p>
+                        <p className='userValue'>{user.userName}</p>
+                    </div>    
+                )}     
             </div>
         )
     }
