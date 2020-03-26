@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserCard from './UserCard.jsx'
 import './User.css';
 
 class User extends Component {
@@ -18,7 +19,8 @@ class User extends Component {
             const users = await this.get();
             const userArray = users.results.map( user => {
                 return {userName: user.name.first + ' ' + user.name.last,
-                userImage: user.picture.large}
+                userImage: user.picture.large,
+                userId: user.info.seed}
             })
             this.setState(
                 {
@@ -39,12 +41,7 @@ class User extends Component {
         return (
             <div>
                 {userArray.map( user => 
-                    <div className='card'>
-                        <img className='userPhoto' src={user.userImage} 
-                        alt='some random person'></img>
-                        <p className='userTitle'>Hi, My name is</p>
-                        <p className='userValue'>{user.userName}</p>
-                    </div>    
+                      <UserCard key={user.userId} user={user}/>
                 )}     
             </div>
         )
