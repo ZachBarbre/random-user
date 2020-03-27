@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import UserList from './components/UserList.jsx'
+import { Section, Container } from 'bloomer';
+import 'bulma/css/bulma.css'
 import './App.css';
-
 class App extends Component {
   state = {
     userArray: [],
-    activeInfo: []
+    activeInfo: 'name'
   }
 
   get = async () => {
-      const response = await fetch(`https://randomuser.me/api/?results=10`);
+      const response = await fetch(`https://randomuser.me/api/?results=9`);
       const data = await response.json();
       return data;
   }
@@ -30,6 +31,10 @@ class App extends Component {
       }
   }
 
+  clickHandler = (infoValue) => {
+
+  }
+
   render() {
     const { userArray } = this.state;
     return (
@@ -39,9 +44,11 @@ class App extends Component {
             RANDOM USERS
           </h2>
         </header>
-        <div className='wrapper'>
-          <UserList userArray={userArray}/>
-        </div>
+        <Section>
+          <Container>
+            <UserList userArray={userArray}/>
+          </Container>
+        </Section>
       </div>
     );
   }

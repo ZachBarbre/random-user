@@ -1,8 +1,9 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserAlt, faEnvelope, faMapMarked, faBirthdayCake, faPhone } from '@fortawesome/free-solid-svg-icons'
 
-function UserCard(props) {
-   
-    
+
+function UserCard(props) { 
     return(
         <div className='card'>
             <img className='userPhoto' src={props.user.picture.large} 
@@ -12,15 +13,14 @@ function UserCard(props) {
             + ' ' + 
             props.user.name.last}</p>
             <ul className='infoSelect'>
-                <li>Name</li>
-                <li>Email</li>
-                <li>Address</li>                      
-                <li>Birthday</li>
-                <li>Phone Number</li>
+                <li><FontAwesomeIcon icon={faUserAlt}/></li>
+                <li><FontAwesomeIcon icon={faEnvelope}/></li>
+                <li><FontAwesomeIcon icon={faMapMarked}/></li>
+                <li><FontAwesomeIcon icon={faPhone}/></li>
+                <li><FontAwesomeIcon icon={faBirthdayCake}/></li>
             </ul>
         </div>  
-    )
+    );
 }
 
-
-export default UserCard
+export default UserCard;
