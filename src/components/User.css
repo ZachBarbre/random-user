@@ -34,3 +34,11 @@
     margin-bottom: 30px;
     border: 1px solid rgba(0,0,0,.25);
 }
+
+.infoSelect {
+    list-style: none;
+}
+
+.infoSelect li {
+    display: inline-block;
+}

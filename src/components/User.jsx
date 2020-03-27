@@ -5,7 +5,8 @@ import './User.css';
 class User extends Component {
 
     state = {
-        userArray: []
+        userArray: [],
+        activeInfo: []
     }
 
     async get() {
@@ -17,11 +18,7 @@ class User extends Component {
     async componentDidMount() {
         try {
             const users = await this.get();
-            const userArray = users.results.map( user => {
-                return {userName: user.name.first + ' ' + user.name.last,
-                userImage: user.picture.large,
-                userId: user.info.seed}
-            })
+            const userArray = users.results
             this.setState(
                 {
                     userArray: userArray,
@@ -35,13 +32,12 @@ class User extends Component {
         }
     }
 
-
     render() {
         const { userArray } = this.state;
         return (
             <div>
-                {userArray.map( user => 
-                      <UserCard key={user.userId} user={user}/>
+                {userArray.map(user => 
+                      <UserCard key={user.login.uuid} user={user}/>
                 )}     
             </div>
         )
