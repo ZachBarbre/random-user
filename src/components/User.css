@@ -2,7 +2,7 @@
     position: relative;
     padding: 20px 0;
     margin: 3%;
-    width: 420px;
+    width: 600px;
     background: #fff;
     border-radius: 3px;
     box-shadow: 0 0 1px rgba(0,0,0,.5);
@@ -42,4 +42,9 @@
 .infoSelect li {
     display: inline-block;
     padding: 0 5%;
+    cursor: pointer;
+}
+
+.email {
+    font-size: 24px;
 }

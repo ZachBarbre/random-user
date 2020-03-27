@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import UserList from './components/UserList.jsx'
-import { Section, Container } from 'bloomer';
+import UserCard from './components/UserCard.jsx'
+import { Section, Container, Columns, Column } from 'bloomer';
 import 'bulma/css/bulma.css'
 import './App.css';
 class App extends Component {
   state = {
-    userArray: [],
-    activeInfo: 'name'
+    userArray: []
   }
 
   get = async () => {
@@ -21,7 +20,7 @@ class App extends Component {
           const userArray = users.results
           this.setState(
               {
-                  userArray: userArray
+                  userArray: userArray,
               }
           );
       } catch (error) {
@@ -31,8 +30,8 @@ class App extends Component {
       }
   }
 
-  clickHandler = (infoValue) => {
-
+  clickInfo = (infoIndex, value) => {
+    console.log(infoIndex, value)
   }
 
   render() {
@@ -46,7 +45,18 @@ class App extends Component {
         </header>
         <Section>
           <Container>
-            <UserList userArray={userArray}/>
+            <Columns isMultiline>
+              {
+              userArray.map((user, index) => {
+                return (
+                  <Column isSize='1/3'>
+                      <UserCard key={index} user={user} />
+                  </Column>
+                )
+              }
+              )
+            }     
+            </Columns>
           </Container>
         </Section>
       </div>
