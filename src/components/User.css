@@ -1,0 +1,50 @@
+.card {
+    position: relative;
+    padding: 20px 0;
+    margin: 3%;
+    width: 600px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 1px rgba(0,0,0,.5);
+    overflow: hidden;
+    text-align: center;
+}
+
+.userTitle {
+    color: #999;
+    font-size: 18px;
+    margin: 0;
+}
+
+.userValue {
+    color: #2c2e31;
+    font-size: 38px;
+    margin: 5px;
+    text-transform: capitalize;
+}
+
+.userPhoto {
+    position: relative;
+    background: #fff;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    border: 1px solid rgba(0,0,0,.25);
+}
+
+.infoSelect {
+    list-style: none;
+    padding-top: 2%;
+}
+
+.infoSelect li {
+    display: inline-block;
+    padding: 0 5%;
+    cursor: pointer;
+}
+
+.email {
+    font-size: 24px;
+}
